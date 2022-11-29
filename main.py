@@ -1,12 +1,14 @@
-#Infor proiektua
+#Infor proiektua: Mekanografia jokua
+
+#Func:
 import random
 def menu(turno):
     if turno == 0:
         print("Ongi etorri...")
     else:
         print("Jokatzen...")
-    modua = input(""" """)
-    zail = input(""" """)
+    modua = input(""" Modua: """)
+    zail = input(""" Zailtasuna: """)
     return modua, zail
 
 def esaldi_aukera(zail):
@@ -22,9 +24,9 @@ def esaldi_aukera(zail):
     elif zail == 3:
         libu = libu3
     r = random.randint(0, len(libu)-1)
-    h = libu[r]
-    print(h)
-    return h
+    esaldia = libu[r]
+    print(esaldia)
+    return esaldia
     
 #     if zail == 1:
 #         r = random.randint(0, len(libu1))
@@ -37,11 +39,11 @@ def esaldi_aukera(zail):
 #         h = libu3[r]
     
 
-def sarrera(h):
-    for i in range(len(h)):
+def sarrera(esaldia):
+    for i in range(len(esaldia)):
         print("_",end="")
     print("\r")
-    for i in range(len(h)):
+    for i in range(len(esaldia)):
         input()
         
 modua, zailtasuna = menu(0)
