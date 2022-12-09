@@ -1,51 +1,58 @@
 #Infor proiektua: Mekanografia jokua
 
-#Func:
+#mod:
 import random
+import time
+
+#func
 def menu(turno):
     if turno == 0:
         print("Ongi etorri...")
     else:
         print("Jokatzen...")
     modua = input(""" Modua: """)
-    zail = input(""" Zailtasuna: """)
+    zail = input(""" Zailtasuna | 1 | 2 | 3 | : """)
     return modua, zail
 
 def esaldi_aukera(zail):
-    print(zail)
+    print()
     libu = []
     libu1 = ["Kaixo"]
     libu2 = ["Egun on"]
     libu3 = ["Arratsalde on"]
-    if zail == 1:
+    if zail == '1':
         libu = libu1
-    elif zail == 2:
+    elif zail == '2':
         libu = libu2
-    elif zail == 3:
+    elif zail == '3':
         libu = libu3
-    r = random.randint(0, len(libu)-1)
-    esaldia = libu[r]
+    esaldia = libu[0]
     print(esaldia)
-    return esaldia
-    
-#     if zail == 1:
-#         r = random.randint(0, len(libu1))
-#         h = libu1[r]
-#     elif zail == 2:
-#         r = random.randint(0, len(libu2))
-#         h = libu2[r]
-#     else:
-#         r = random.randint(0, len(libu3))
-#         h = libu3[r]
-    
+    d_has = time.time()
+    return esaldia, d_has
 
-def sarrera(esaldia):
-    for i in range(len(esaldia)):
-        print("_",end="")
-    print("\r")
-    for i in range(len(esaldia)):
-        input()
+def erlojua(hasiera):
+    denbosoa = round((time.time() - hasiera), 2)
+    time.sleep(1)
+    return denbosoa
         
+def nota(esaldia, sartua):
+    puntuazioa = len(esaldia)
+    if sartua != esaldia:
+        if len(sartua) < len(esaldia):
+            puntuazioa -= (len(esaldia)-len(sartua))
+        for i in range(len(sartua)):
+            if sartua[i] != esaldia[i]:
+                puntuazioa -= 1
+    return puntuazioa
+
+#main
 modua, zailtasuna = menu(0)
-h = esaldi_aukera(zailtasuna)
-sarrera(h)
+i = 0
+e, d = esaldi_aukera(zailtasuna)
+sarrera = input()
+t = erlojua(d)
+p = nota(e, sarrera)
+
+print("Zure nota {} tik: {}".format(len(e),p))
+print("Denbora: ", t)
