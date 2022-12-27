@@ -14,10 +14,9 @@ def menu(turno):
     zail = input(""" Zailtasuna | 1 | 2 | 3 | : """)
     return modua, zail
 
-def esaldi_aukera(zail):
-    print()
+def esaldia_aukeratu(zail):
     libu = []
-    libu1 = ["Kaixo"]
+    libu1 = ["Kaixo","Agur","ETA"]
     libu2 = ["Egun on"]
     libu3 = ["Arratsalde on"]
     if zail == '1':
@@ -26,36 +25,43 @@ def esaldi_aukera(zail):
         libu = libu2
     elif zail == '3':
         libu = libu3
-    esaldia = libu[0]
-    print(esaldia)
+    esaldia = random.choice(libu)
+    #print(esaldia)
     return esaldia
 
-def nehurtu_erabilitako_denbora(hasiera):
-  return time.perf_counter() - hasiera
+def neurtu_erabilitako_denbora(hasiera):
+  return round(time.time() - hasiera, 2)
         
-def nota(esaldia, sarrera, hasiera):
+def nota(esaldia, puntuazioa, sarrera, hasiera):
     puntuazioa = puntuazioa + len(esaldia)
-    puntuazioa_osoa = puntuazioa_osoa + len(esaldia)
-    if sartua != esaldia:
+    t = neurtu_erabilitako_denbora(hasiera)
+    if sarrera != esaldia:
+        print(f"Zerbait ez dago ongi! Erabilitako denbora: {t}")
         if len(sarrera) < len(esaldia):
             puntuazioa -= (len(esaldia)-len(sarrera))
         for i in range(len(sarrera)):
             if sarrera[i] != esaldia[i]:
                 puntuazioa -= 1
     else:
-        t = nehurtu_erabilitzako_denbora(hasiera)
-    return puntuazioa, puntuazioa_osoa
+        print(f"Sekulakoa! Erabilitako denbora: {t}")
+    return puntuazioa, t
 
 #main
 modua, zailtasuna = menu(0)
+puntuazioa = 0
+puntuazio_osoa = 0
+
 if modua == "1":
-    hitz_kopurua = 5;
-    for i in range(hitz_kopurua):
-        esaldia = esaldia_aukeratu()
-        print(f"Sartu hitza: {esaldia}")
-        sarrera = input()
-        hasierako_denbora = time.perf_counter()
-        puntuazioa, puntuazioa_osoa = nota(esaldia, sarrera, hasierako_denbora)
-        
-    print(f"Zure nota: {puntuazioa}/{puntuazioa_osoa}")
+    hitz_kopurua = 5
+elif modua == "2":
+    hitz_kopurua = input()
+for i in range(hitz_kopurua):
+    esaldia = esaldia_aukeratu(zailtasuna)
+    hasierako_denbora = time.time()
+    print(f"Sartu hitza: {esaldia}")
+    sarrera = input()
+    puntuazio_osoa = puntuazio_osoa + len(esaldia)
+    puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
+    
+print(f"Zure nota: {puntuazioa}/{puntuazio_osoa}")
 
