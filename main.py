@@ -7,11 +7,33 @@ import time
 #func
 def menu(turno):
     if turno == 0:
-        print("Ongi etorri...")
+        print("""
+Ongi etorri mekanografia testera
+Ondoren, jokatzeko modua eta esaldien zailtasuna hautatuko duzu
+""")
     else:
-        print("Jokatzen...")
-    modua = input(""" Modua: """)
-    zail = input(""" Zailtasuna | 1 | 2 | 3 | : """)
+        berriz=input("Jokatzeko modua zein zailtasuna aldatu nahi duzu? b/e")
+        if berriz == 'b':
+            modua = input("""
+Moduak:
+1| 5 esaldi
+2| Hitz kopuru aukeratua
+3| Denbora aukeratua
+Aukeratu modua:
+""")
+            zail = int(input("""
+Zailtasuna | 1 | 2 | 3 | :
+"""))
+    modua = input("""
+Moduak:
+1| 5 esaldi
+2| Hitz kopuru aukeratua
+3| Denbora aukeratua
+Aukeratu modua:
+""")
+    zail = int(input("""
+Zailtasuna | 1 | 2 | 3 | :
+"""))
     return modua, zail
 
 def esaldia_aukeratu(zail):
@@ -19,9 +41,9 @@ def esaldia_aukeratu(zail):
     libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai"]
     libu2 = ["Akerrak adarrak okerrak ditu","Aldapeko sagarraren adarraren puntan","Zozoak beleari ipurbeltz"]
     libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikelezizanmaltzurralanhandiaegundugu"]
-    if zail == '1':
+    if zail == 1:
         libu = libu1
-    elif zail == '2':
+    elif zail == 2:
         libu = libu2
     elif zail == '3':
         libu = libu3
