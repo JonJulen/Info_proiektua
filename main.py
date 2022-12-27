@@ -28,31 +28,34 @@ def esaldi_aukera(zail):
         libu = libu3
     esaldia = libu[0]
     print(esaldia)
-    d_has = time.time()
-    return esaldia, d_has
+    return esaldia
 
-def erlojua(hasiera):
-    denbosoa = round((time.time() - hasiera), 2)
-    time.sleep(1)
-    return denbosoa
+def nehurtu_erabilitako_denbora(hasiera):
+  return time.perf_counter() - hasiera
         
-def nota(esaldia, sartua):
-    puntuazioa = len(esaldia)
+def nota(esaldia, sarrera, hasiera):
+    puntuazioa = puntuazioa + len(esaldia)
+    puntuazioa_osoa = puntuazioa_osoa + len(esaldia)
     if sartua != esaldia:
-        if len(sartua) < len(esaldia):
-            puntuazioa -= (len(esaldia)-len(sartua))
-        for i in range(len(sartua)):
-            if sartua[i] != esaldia[i]:
+        if len(sarrera) < len(esaldia):
+            puntuazioa -= (len(esaldia)-len(sarrera))
+        for i in range(len(sarrera)):
+            if sarrera[i] != esaldia[i]:
                 puntuazioa -= 1
-    return puntuazioa
+    else:
+        t = nehurtu_erabilitzako_denbora(hasiera)
+    return puntuazioa, puntuazioa_osoa
 
 #main
 modua, zailtasuna = menu(0)
-i = 0
-e, d = esaldi_aukera(zailtasuna)
-sarrera = input()
-t = erlojua(d)
-p = nota(e, sarrera)
+if modua == "1":
+    hitz_kopurua = 5;
+    for i in range(hitz_kopurua):
+        esaldia = esaldia_aukeratu()
+        print(f"Sartu hitza: {esaldia}")
+        sarrera = input()
+        hasierako_denbora = time.perf_counter()
+        puntuazioa, puntuazioa_osoa = nota(esaldia, sarrera, hasierako_denbora)
+        
+    print(f"Zure nota: {puntuazioa}/{puntuazioa_osoa}")
 
-print("Zure nota {} tik: {}".format(len(e),p))
-print("Denbora: ", t)
