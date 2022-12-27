@@ -50,41 +50,45 @@ def nota(esaldia, puntuazioa, sarrera, hasiera):
     return puntuazioa, t
 
 #main
-modua, zailtasuna = menu(0)
-puntuazioa = 0
-puntuazio_osoa = 0
-
-if modua == "1":
-    hitz_kopurua = 5
-    for i in range(hitz_kopurua):
-        esaldia = esaldia_aukeratu(zailtasuna)
-        hasierako_denbora = time.time()
-        print(f"Sartu hitza: {esaldia}")
-        sarrera = input()
-        puntuazio_osoa = puntuazio_osoa + len(esaldia)
-        puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
-        
-elif modua == "2":
-    hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?: "))
-    for i in range(hitz_kopurua):
-        esaldia = esaldia_aukeratu(zailtasuna)
-        hasierako_denbora = time.time()
-        print(f"Sartu hitza: {esaldia}")
-        sarrera = input()
-        puntuazio_osoa = puntuazio_osoa + len(esaldia)
-        puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
-        
-elif modua == "3":
-    geratzen_denbora = 60
-    while geratzen_denbora > 0:
-        esaldia = esaldia_aukeratu(zailtasuna)
-        hasierako_denbora = time.time()
-        print(f"Sartu hitza: {esaldia}")
-        sarrera = input()
-        puntuazio_osoa = puntuazio_osoa + len(esaldia)
-        puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
-        geratzen_denbora -= denbora
-        print(f"Geratzen zaizun denbora: {round(geratzen_denbora, 2)}")
-        
-print(f"Zure nota: {puntuazioa}/{puntuazio_osoa}")
-
+aukera = "b"
+turno = 0
+while aukera == "b":
+    modua, zailtasuna = menu(turno)
+    puntuazioa = 0
+    puntuazio_osoa = 0
+    
+    if modua == "1":
+        hitz_kopurua = 5
+        for i in range(hitz_kopurua):
+            esaldia = esaldia_aukeratu(zailtasuna)
+            hasierako_denbora = time.time()
+            print(f"Sartu hitza: {esaldia}")
+            sarrera = input()
+            puntuazio_osoa = puntuazio_osoa + len(esaldia)
+            puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
+            
+    elif modua == "2":
+        hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?: "))
+        for i in range(hitz_kopurua):
+            esaldia = esaldia_aukeratu(zailtasuna)
+            hasierako_denbora = time.time()
+            print(f"Sartu hitza: {esaldia}")
+            sarrera = input()
+            puntuazio_osoa = puntuazio_osoa + len(esaldia)
+            puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
+            
+    elif modua == "3":
+        geratzen_denbora = int(input("Sartu nahi duzun denbora segundutan: "))
+        while geratzen_denbora > 0:
+            esaldia = esaldia_aukeratu(zailtasuna)
+            hasierako_denbora = time.time()
+            print(f"Sartu hitza: {esaldia}")
+            sarrera = input()
+            puntuazio_osoa = puntuazio_osoa + len(esaldia)
+            puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
+            geratzen_denbora -= denbora
+            print(f"Geratzen zaizun denbora: {round(geratzen_denbora, 2)}")
+            
+    print(f"Zure nota: {puntuazioa}/{puntuazio_osoa}")
+    turno += 1
+    aukera = input("Berriz jolastu?(b/e): ")
