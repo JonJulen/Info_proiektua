@@ -24,6 +24,7 @@ Aukeratu modua:
             zail = int(input("""
 Zailtasuna | 1 | 2 | 3 | :
 """))
+            return modua, zail
     modua = input("""
 Moduak:
 1| 5 esaldi
