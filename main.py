@@ -16,9 +16,9 @@ def menu(turno):
 
 def esaldia_aukeratu(zail):
     libu = []
-    libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai","Aldapeko sagarraren adarraren puntan","Zozoak beleari ipurbeltz"]
-    libu2 = ["Egun on"]
-    libu3 = ["Arratsalde on"]
+    libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai"]
+    libu2 = ["Akerrak adarrak okerrak ditu","Aldapeko sagarraren adarraren puntan","Zozoak beleari ipurbeltz"]
+    libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikelezizanmaltzurralanhandiaegundugu"]
     if zail == '1':
         libu = libu1
     elif zail == '2':
