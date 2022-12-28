@@ -15,19 +15,19 @@ Ondoren, jokatzeko modua eta esaldien zailtasuna hautatuko duzu
         berriz=input("Jokatzeko modua zein zailtasuna aldatu nahi duzu?(b/e): ")
         if berriz != 'b':
             modua = azkeneko_modua
-            zailtasuna = azkeneko_zailtasuna
+            zail = azkeneko_zailtasuna
             return modua, zail
-        modua = input("""
+    modua = input("""
 Moduak:
 1| 5 esaldi
 2| Hitz kopuru aukeratua
 3| Denbora aukeratua
 Aukeratu modua:
 """)
-        zail = int(input("""
+    zail = int(input("""
 Zailtasuna | 1 | 2 | 3 | :
 """))
-        return modua, zail
+    return modua, zail
 #    modua = input("""
 #Moduak:
 #1| 5 esaldi
