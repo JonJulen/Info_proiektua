@@ -39,9 +39,9 @@ Zailtasuna | 1 | 2 | 3 | :
 
 def esaldia_aukeratu(zail):
     libu = []
-    libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai"]
-    libu2 = ["Akerrak adarrak okerrak ditu","Aldapeko sagarraren adarraren puntan","Zozoak beleari ipurbeltz"]
-    libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikelezizanmaltzurralanhandiaegundugu"]
+    libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai", "Hoi dek sasoia"]
+    libu2 = ["Akerrak adarrak okerrak ditu", "Aldapeko sagarraren adarraren puntan", "Zozoak beleari ipurbeltz", "Azaroa bero, negua gero", "Eguzkia nora zapiak hara", "Bururik ez eta txapela nahi"]
+    libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikel ez izan maltzurra lan handia egun dugu", "Afaldu nahi ez duenaren afaria beti prest", "Abenduko eguna, argitu orduko iluna"]
     if zail == 1:
         libu = libu1
     elif zail == 2:
