@@ -12,30 +12,33 @@ Ongi etorri mekanografia testera
 Ondoren, jokatzeko modua eta esaldien zailtasuna hautatuko duzu
 """)
     else:
-        berriz=input("Jokatzeko modua zein zailtasuna aldatu nahi duzu? b/e")
-        if berriz == 'b':
-            modua = input("""
-Moduak:
-1| 5 esaldi
-2| Hitz kopuru aukeratua
-3| Denbora aukeratua
-Aukeratu modua:
-""")
-            zail = int(input("""
-Zailtasuna | 1 | 2 | 3 | :
-"""))
+        berriz=input("Jokatzeko modua zein zailtasuna aldatu nahi duzu?(b/e): ")
+        if berriz != 'b':
+            modua = azkeneko_modua
+            zailtasuna = azkeneko_zailtasuna
             return modua, zail
-    modua = input("""
+        modua = input("""
 Moduak:
 1| 5 esaldi
 2| Hitz kopuru aukeratua
 3| Denbora aukeratua
 Aukeratu modua:
 """)
-    zail = int(input("""
+        zail = int(input("""
 Zailtasuna | 1 | 2 | 3 | :
 """))
-    return modua, zail
+        return modua, zail
+#    modua = input("""
+#Moduak:
+#1| 5 esaldi
+#2| Hitz kopuru aukeratua
+#3| Denbora aukeratua
+#Aukeratu modua:
+#""")
+#    zail = int(input("""
+#Zailtasuna | 1 | 2 | 3 | :
+#"""))
+#    return modua, zail
 
 def esaldia_aukeratu(zail):
     libu = []
@@ -86,21 +89,32 @@ def mezua(puntuazioa, puntuazioa_osoa, denbora):
         print(f"Zure HM (hitzak minutuko) 70 eta 80 bitartean dago, zehazki {r}, paregabea, bikaina")
     elif 80 < r:
         print(f"Zure HM (hitzak minutuko) 80 baino altuagoa da, zehazki {r}, robota ote?")
+        
+def marra_lerroa():
+    print("-"*40)
+    
 #main
 aukera = "b"
 turno = 0
+azkeneko_modua = 0
+azkeneko_zailtasuna = 0
 while aukera == "b":
     modua, zailtasuna = menu(turno)
+    azkeneko_modua = modua
+    azkeneko_zailtasuna = zailtasuna
     puntuazioa = 0
     puntuazio_osoa = 0
     denbora_totala = 0
+    sartutako_hitzak = 0
     
     if modua == "1":
         hitz_kopurua = 5
         for i in range(hitz_kopurua):
             esaldia = esaldia_aukeratu(zailtasuna)
             hasierako_denbora = time.time()
+            marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
+            marra_lerroa()
             sarrera = input()
             puntuazio_osoa = puntuazio_osoa + len(esaldia)
             puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
@@ -111,8 +125,11 @@ while aukera == "b":
         for i in range(hitz_kopurua):
             esaldia = esaldia_aukeratu(zailtasuna)
             hasierako_denbora = time.time()
+            marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
+            marra_lerroa()
             sarrera = input()
+            print()
             puntuazio_osoa = puntuazio_osoa + len(esaldia)
             puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
             denbora_totala += denbora
@@ -123,14 +140,23 @@ while aukera == "b":
         while geratzen_denbora > 0:
             esaldia = esaldia_aukeratu(zailtasuna)
             hasierako_denbora = time.time()
+            marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
+            marra_lerroa()
             sarrera = input()
+            sartutako_hitzak += 1
+            print()
             puntuazio_osoa = puntuazio_osoa + len(esaldia)
             puntuazioa, denbora = nota(esaldia, puntuazioa, sarrera, hasierako_denbora)
             geratzen_denbora -= denbora
             print(f"Geratzen zaizun denbora: {round(geratzen_denbora, 2)}")
+            print(f"Orain arte sarturiko hitzak: {sartutako_hitzak}")
             
     print(f"Zure nota: {puntuazioa}/{puntuazio_osoa}")
     mezua(puntuazioa, puntuazio_osoa, denbora_totala)
     turno += 1
+    marra_lerroa()
     aukera = input("Berriz jolastu?(b/e): ")
+    marra_lerroa()
+    azkeneko_modua = modua
+    azkeneko_zailtasuna = zailtasuna 
