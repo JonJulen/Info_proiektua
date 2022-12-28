@@ -75,7 +75,7 @@ def nota(esaldia, puntuazioa, sarrera, hasiera):
         print(f"Sekulakoa! Erabilitako denbora: {t}")
     return puntuazioa, t
 
-def mezua(puntuazioa, puntuazioa_osoa, denbora):
+def mezua(puntuazioa, denbora):
     r = round((puntuazioa/5)/(denbora/60))
     if r < 24:
         print(f"Zure HM (hitzak minutuko) 24 baino baxuagoa da, zehazki {r}, gehio praktika beharko zenuke")
@@ -152,7 +152,7 @@ while aukera == "b":
             print(f"Geratzen zaizun denbora: {round(geratzen_denbora, 2)}")
             print(f"Orain arte sarturiko hitzak: {sartutako_hitzak}")
             
-    print(f"Zure nota: {puntuazioa}/{puntuazio_osoa}")
+    print(f"Zehaztasuna: {puntuazioa}/{puntuazio_osoa}")
     mezua(puntuazioa, puntuazio_osoa, denbora_totala)
     turno += 1
     marra_lerroa()
