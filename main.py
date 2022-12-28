@@ -13,6 +13,7 @@ Ondoren, jokatzeko modua eta esaldien zailtasuna hautatuko duzu
 """)
     else:
         berriz=input("Jokatzeko modua zein zailtasuna aldatu nahi duzu?(b/e): ")
+        marra_lerroa()
         if berriz != 'b':
             modua = azkeneko_modua
             zail = azkeneko_zailtasuna
@@ -28,17 +29,6 @@ Aukeratu modua:
 Zailtasuna | 1 | 2 | 3 | :
 """))
     return modua, zail
-#    modua = input("""
-#Moduak:
-#1| 5 esaldi
-#2| Hitz kopuru aukeratua
-#3| Denbora aukeratua
-#Aukeratu modua:
-#""")
-#    zail = int(input("""
-#Zailtasuna | 1 | 2 | 3 | :
-#"""))
-#    return modua, zail
 
 def esaldia_aukeratu(zail):
     libu = []
@@ -153,7 +143,7 @@ while aukera == "b":
             print(f"Orain arte sarturiko hitzak: {sartutako_hitzak}")
             
     print(f"Zehaztasuna: {puntuazioa}/{puntuazio_osoa}")
-    mezua(puntuazioa, puntuazio_osoa, denbora_totala)
+    mezua(puntuazioa, denbora_totala)
     turno += 1
     marra_lerroa()
     aukera = input("Berriz jolastu?(b/e): ")
