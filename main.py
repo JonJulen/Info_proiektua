@@ -1,4 +1,4 @@
-#Infor proiektua: Mekanografia jokua
+#Infor proiektua: Mekanografia jokua || Patxi Bueno eta Jon Julen Weyndling
 
 #mod:
 import random
@@ -28,21 +28,31 @@ Aukeratu modua:
     zail = int(input("""
 Zailtasuna | 1 | 2 | 3 | :
 """))
+    print()
     return modua, zail
-
-def esaldia_aukeratu(zail):
+    
+def liburutegia_aukeratu(zail):
     libu = []
+    auxlibu = []
     libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai", "Hoi dek sasoia"]
     libu2 = ["Akerrak adarrak okerrak ditu", "Aldapeko sagarraren adarraren puntan", "Zozoak beleari ipurbeltz", "Azaroa bero, negua gero", "Eguzkia nora zapiak hara", "Bururik ez eta txapela nahi"]
     libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikel ez izan maltzurra lan handia egun dugu", "Afaldu nahi ez duenaren afaria beti prest", "Abenduko eguna, argitu orduko iluna"]
     if zail == 1:
-        libu = libu1
+        libu = libu1.copy()
+        auxlibu = libu1.copy()
     elif zail == 2:
-        libu = libu2
-    elif zail == '3':
-        libu = libu3
+        libu = libu2.copu()
+        auxlibu = libu2.copy()
+    elif zail == 3:
+        libu = libu3.copy()
+        auxlibu = libu3.copy()
+    return libu, auxlibu
+
+def esaldia_aukeratu(libu, auxlibu):
+    if len(libu) == 0:
+        libu = auxlibu.copy()
     esaldia = random.choice(libu)
-    #print(esaldia)
+    libu.remove(esaldia)
     return esaldia
 
 def neurtu_erabilitako_denbora(hasiera):
@@ -90,6 +100,7 @@ azkeneko_modua = 0
 azkeneko_zailtasuna = 0
 while aukera == "b":
     modua, zailtasuna = menu(turno)
+    liburutegia, aux_liburutegia = liburutegia_aukeratu(zailtasuna)
     azkeneko_modua = modua
     azkeneko_zailtasuna = zailtasuna
     puntuazioa = 0
@@ -100,7 +111,7 @@ while aukera == "b":
     if modua == "1":
         hitz_kopurua = 5
         for i in range(hitz_kopurua):
-            esaldia = esaldia_aukeratu(zailtasuna)
+            esaldia = esaldia_aukeratu(liburutegia, aux_liburutegia)
             hasierako_denbora = time.time()
             marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
@@ -111,9 +122,9 @@ while aukera == "b":
             denbora_totala += denbora
             
     elif modua == "2":
-        hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?: "))
+        hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?:(1-10) "))
         for i in range(hitz_kopurua):
-            esaldia = esaldia_aukeratu(zailtasuna)
+            esaldia = esaldia_aukeratu(liburutegia, aux_liburutegia)
             hasierako_denbora = time.time()
             marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
@@ -128,7 +139,7 @@ while aukera == "b":
         geratzen_denbora = int(input("Sartu nahi duzun denbora segundutan: "))
         denbora_totala = geratzen_denbora
         while geratzen_denbora > 0:
-            esaldia = esaldia_aukeratu(zailtasuna)
+            esaldia = esaldia_aukeratu(liburutegia, aux_liburutegia)
             hasierako_denbora = time.time()
             marra_lerroa()
             print(f"Sartu hitza: {esaldia}")
