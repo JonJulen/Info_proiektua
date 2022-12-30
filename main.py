@@ -34,14 +34,14 @@ Zailtasuna | 1 | 2 | 3 | :
 def liburutegia_aukeratu(zail):
     libu = []
     auxlibu = []
-    libu1 = ["Egun on Euskal Herria","Zer moduz","Hik lan eta nik jai", "Hoi dek sasoia"]
-    libu2 = ["Akerrak adarrak okerrak ditu", "Aldapeko sagarraren adarraren puntan", "Zozoak beleari ipurbeltz", "Azaroa bero, negua gero", "Eguzkia nora zapiak hara", "Bururik ez eta txapela nahi"]
-    libu3 = ["Bederatziehun eta laurogeita hemeretzi mila bederatziehun eta laurogeita hemeretzi","Superkalifragilistikoespialidoso","Mikel ez izan maltzurra lan handia egun dugu", "Afaldu nahi ez duenaren afaria beti prest", "Abenduko eguna, argitu orduko iluna"]
+    libu1 = ["Egun on Euskal Herria","Gezurrak buztana labur","Hik lan eta nik jai", "Hoi dek sasoia", "Non gogoa han zangoa", "Goiz gorri arrats euri", "Geroa alferraren leloa", "Su gaberik ez da kerik","Ezinak ez du legerik","Zer ikusi, hura ikas"]
+    libu2 = ["Akerrak adarrak okerrak ditu", "Aldapeko sagarraren adarraren puntan", "Zozoak beleari ipurbeltz", "Azaroa bero, negua gero", "Eguzkia nora zapiak hara", "Bururik ez eta txapela nahi","Haurrak hazi nekeak bizi","Umearen zentzuna, etxean entzuna","Ogi gogorrari hagin zorrotz","A ze parea karakola eta barea"]
+    libu3 = ["Urrutiko intxaurrak hamalau, bertara joan eta lau","Superkalifragilistikoespialidoso","Mikel ez izan maltzurra lan handia egun dugu", "Afaldu nahi ez duenaren afaria beti prest", "Abenduko eguna, argitu orduko iluna","Elur-melur ez naiz zure beldur, badut etxean arto eta egur","Txapelik handienak ez du buru hutsik betetzen","Bururik nekatzen ez duenak, hankak nekatu behar","Txapelik handienak ez du buru hutsik betetzen"]
     if zail == 1:
         libu = libu1.copy()
         auxlibu = libu1.copy()
     elif zail == 2:
-        libu = libu2.copu()
+        libu = libu2.copy()
         auxlibu = libu2.copy()
     elif zail == 3:
         libu = libu3.copy()
@@ -122,7 +122,7 @@ while aukera == "b":
             denbora_totala += denbora
             
     elif modua == "2":
-        hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?:(1-10) "))
+        hitz_kopurua = int(input("Zenbat hitz sartu nahi dituzu?: "))
         for i in range(hitz_kopurua):
             esaldia = esaldia_aukeratu(liburutegia, aux_liburutegia)
             hasierako_denbora = time.time()
